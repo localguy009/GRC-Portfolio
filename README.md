@@ -11,9 +11,6 @@ I currently work at Club Car LLC, where I support cloud governance, security aut
 
 - **Email**: matthew.connelly094@gmail.com
 - **LinkedIn**: https://www.linkedin.com/in/matt-connelly-/
-- **GitHub**: [github.com/yourusername](https://github.com/yourusername)
-- **Location**: Evans, GA
-
 ## Technical Skills
 ### Cloud Platforms
 - Azure
