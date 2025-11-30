@@ -17,7 +17,6 @@ This automation removes manual effort by:
 
 Before deploying this automation, ensure you have the following:
 
-### Azure Requirements
 - An active **Azure subscription**
 - Permission to create and manage:
   - **Automation Accounts**
