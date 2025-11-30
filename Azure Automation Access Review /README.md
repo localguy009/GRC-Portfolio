@@ -1,9 +1,6 @@
 # Azure GRC Automation – Entra Global Admin Monthly Report
 
-This project automates the monthly export of *&Entra ID Global Administrators** using an **Azure Automation Runbook**, a **User-Assigned Managed Identity (UAMI)**, and **Microsoft Graph**.  
-The script generates an audit-ready access report and emails it to the security team to support GRC and IAM review workflows.
-
----
+This project automates the monthly export of *Entra ID Global Administrators** using an **Azure Automation Runbook**, a **User-Assigned Managed Identity (UAMI)**, and **Microsoft Graph**.  
 
 ## Project Overview
 
