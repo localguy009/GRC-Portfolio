@@ -11,10 +11,6 @@ This runbook:
 All sensitive IDs and email addresses have been removed for security.
 #>
 
-# ===========================
-# CONFIG (SANITIZED FOR GITHUB)
-# ===========================
-
 # UAMI client ID (replace with your own when deploying)
 $UamiClientId = "<UAMI-CLIENT-ID>"
 
