@@ -1,4 +1,4 @@
-This guide walks through the complete, end-to-end process of building an automated Azure GRC control that performs a Monthly Global Administrator Access Review.
+This guide walks through the process of building an automated Azure GRC control that performs a Monthly Global Administrator Access Review.
 
 ### 1. Create a User-Assigned Managed Identity (UAMI)
 
