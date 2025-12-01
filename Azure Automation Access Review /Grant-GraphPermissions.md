@@ -1,6 +1,6 @@
 # **Granting Microsoft Graph Permissions for the Managed Identity**
 
-This guide provides instructions for assigning the required **Microsoft Graph application permissions** to the **User-Assigned Managed Identity (UAMI)** used by the Azure Automation runbook.
+This guide provides instructions for assigning the required Microsoft Graph application permissions to the User-Assigned Managed Identity (UAMI) used by the Azure Automation runbook.
 
 Some Azure tenants restrict granting these permissions through the portal.  
 If you cannot add the Graph permission or grant admin consent through the UI, this script will
