@@ -160,6 +160,7 @@ Now that the environment, permissions, and modules are configured, you can add t
 5. Click Edit at the top
 6. Paste in your full PowerShell automation script (See Invoke-GlobalAdminAccess.ps1)
 7. Click Save > Test Pane. (This allows you to test your script)
+
 Confirm:
  - UAMI connects successfully  
 - Global Admin list is retrieved  
