@@ -59,7 +59,7 @@ GRC_Portfolio/
 - PowerShell scripting & Managed Identity authentication
 - SharePoint automation for evidence retention
 
-  ### AWS S3 Encryption Compliance Checker 
+ ### AWS S3 Encryption Compliance Checker 
  - Developed a Python script to automatically check all S3 buckets in an AWS account and determine whether server-side encryption (SSE) is enabled.
  - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/blob/main/AWS/S3EncryptionCheck/README.md)
 
