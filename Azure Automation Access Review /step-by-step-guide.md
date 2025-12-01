@@ -56,9 +56,11 @@ Note: This step makes the UAMI available to your runbook so it can authenticate 
  **Note:** The default Microsoft Graph modules in Azure Automation (and the ones shown in the Modules Gallery)  
 do **not** work with PowerShell 7.2. 
 (See https://stackoverflow.com/questions/79530659/azure-automation-runbook-invalid-jwt-access-token-error-with-connect-mggraph)
+Before moving forward first check your current modules. Navigate to your automation account > Shared resources > Modules > 
+Search for Microsoft Graph and remove all default Microsoft Graph * modules. (Example Microsoft.Graph Authentication, etc.) 
 
 Because of this, you must manually import the compatible Microsoft Graph module versions using Azure Cloud Shell.
-Run the following commands to import the correct module versions into your Automation Account:
+Run the following in Azure Cloud Shell to import the correct module versions into your Automation Account:
 
 ```powershell
 # Optional but recommended: Import Az.Accounts (required for New-AzAutomationModule operations)
