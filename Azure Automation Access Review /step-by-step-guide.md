@@ -22,7 +22,7 @@ Note: If portal-based consent is restricted in your environment, see Grant-Graph
 7. Click *Grant admin consent for the tenant
 
 
-### 4. Create an Azure Automation Account
+### 3. Create an Azure Automation Account
 
 1. In the Azure portal, search for Automation Accounts.
 2. Click Create.
@@ -32,7 +32,7 @@ Note: If portal-based consent is restricted in your environment, see Grant-Graph
 6. Set Runbook runtime to PowerShell 7.2
 8. Click Review + create** → Create.
 
-### 5. Attach the UAMI to the Automation Account
+### 4. Attach the UAMI to the Automation Account
 
 1. Open your Automation Account.
 2. Go to Identity → User assigned.
@@ -40,7 +40,7 @@ Note: If portal-based consent is restricted in your environment, see Grant-Graph
 4. Select your UAMI and click Add.
 Note: This step makes the UAMI available to your runbook so it can authenticate to Microsoft Graph using 'Connect-MgGraph -Identity
 
-### 6. Create the Runbook
+### 5. Create the Runbook
 
 1. In the Azure Portal, go to Automation Accounts.  
 2. Select your Automation Account.  
@@ -52,7 +52,7 @@ Note: This step makes the UAMI available to your runbook so it can authenticate 
 7. Click Create.
 
 
-### 7. Import Microsoft Graph PowerShell Modules
+### 6. Import Microsoft Graph PowerShell Modules
  **Note:** The default Microsoft Graph modules in Azure Automation (and the ones shown in the Modules Gallery)  
 do **not** work with PowerShell 7.2. 
 (See https://stackoverflow.com/questions/79530659/azure-automation-runbook-invalid-jwt-access-token-error-with-connect-mggraph)
@@ -98,7 +98,7 @@ New-AzAutomationModule `
 
 ```
 
-### 8.0 Create the App Registration for Email
+### 7.0 Create the App Registration for Email
 
 1. In the Azure Portal, go to Microsoft Entra ID  
 2. Select App registrations  
@@ -109,7 +109,7 @@ New-AzAutomationModule `
 7. Click Register
 
 
-### **8.1 Create a Client Secret**
+### **7.1 Create a Client Secret**
 1. In the Azure Portal, go to Microsoft Entra ID  
 2. Select App registrations  
 3. Click the App Registration you created for email 
@@ -119,7 +119,7 @@ New-AzAutomationModule `
 7. Choose an expiration period (12–24 months recommended)  
 8. Copy the secret immediately — you will not be able to view it again
 
-### **8.2 Assign Microsoft Graph API Permissions**
+### **7.2 Assign Microsoft Graph API Permissions**
 
 Go to **API permissions** → **Add a permission** → **Microsoft Graph**.
 
@@ -132,7 +132,7 @@ Add the following:
 2. Ensure each permission shows:  
    **Granted for \<Your Tenant\>**  
 
-### **8.3 Store the Credentials in Azure Automation**
+### **7.3 Store the Credentials in Azure Automation**
 
 1. Go to your Automation Account 
 2. Navigate to Shared Resources → Credentials
@@ -147,7 +147,7 @@ Add the following:
 
 This credential will be securely retrieved by your runbook.
 
-## 9. Add the Runbook Script
+## 8. Add the Runbook Script
 
 Now that the environment, permissions, and modules are configured, you can add the PowerShell automation script to the runbook.
 
@@ -169,7 +169,7 @@ Click Publish
 
 Your runbook is now active and ready to be triggered manually or by a schedule.
 
-## 10. Automate the Runbook to Run Monthly
+## 9. Automate the Runbook to Run Monthly
 With the runbook published, the final step is to create a schedule so the Global Admin Access Review runs automatically every month.
 1. Go to your Automation Account
 2. In the left-hand menu, select:  
