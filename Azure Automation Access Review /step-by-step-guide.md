@@ -14,7 +14,7 @@ This guide walks through the process of building an automated Azure GRC control 
 Note: If portal-based consent is restricted in your environment, see Grant-GraphPermissions.md for a PowerShell method to assign the same permissions.
 1. Go to Microsoft Entra ID → Enterprise applications.
 2. Search for and open your User-Assigned Managed Identity.
-3. Go to Permissions / **API permissions.
+3. Go to Permissions / API permissions.
 4. Click Add a permission → Microsoft Graph → Application permissions.
 5. Add the following permissions:
    - `Directory.Read.All`
