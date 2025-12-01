@@ -7,6 +7,18 @@ Hello, I'm Matt — a Governance, Risk, and Compliance (GRC) professional with a
 I’m a U.S. Navy veteran with a background in Special Operations and I bring that same discipline, adaptability, and mission-driven mindset into my GRC work.
 I currently work at Club Car LLC, where I support cloud governance, security automation, and compliance initiatives across the organization. 
 
+## Repository Structure
+```
+GRC_Portfolio/
+├── README.md                                # You are here
+│
+├── Azure Automation Access Review/          # Azure project
+│   ├── Grant-GraphPermissions.md            # PS Script to grant MS Graph app permissions
+│   ├── Invoke-GlobalAdminAccess.ps1         # Cloudshell script automate Global Admin review
+│   ├── step-by-step-guide.md                # Full setup guide for Azure Automation
+│   └── README.md                            # Folder-specific documentation
+```
+
 ## Contact Information
 
 - **Email**: matthew.connelly094@gmail.com
