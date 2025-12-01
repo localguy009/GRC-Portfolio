@@ -5,7 +5,7 @@
 Hello, I'm Matt — a Governance, Risk, and Compliance (GRC) professional with a focus on cloud security. I'm passionate about building secure cloud environments, aligning security initiatives with business objectives, and ensuring compliance with industry standards and regulations.
 
 I’m a U.S. Navy veteran with a background in Special Operations and I bring that same discipline, adaptability, and mission-driven mindset into my GRC work.
-I currently work at Club Car LLC, where I support cloud governance, security automation, and compliance initiatives across the organization. 
+I currently work at Club Car LLC, where I support cloud governance, security automation and compliance initiatives across the organization. 
 
 ## Repository Structure
 ```
