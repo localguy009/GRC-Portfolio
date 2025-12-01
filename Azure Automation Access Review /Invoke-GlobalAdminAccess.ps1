@@ -1,5 +1,4 @@
 <#
-.SYNOPSIS
 Monthly Global Administrator access review automation
 
 This runbook:
