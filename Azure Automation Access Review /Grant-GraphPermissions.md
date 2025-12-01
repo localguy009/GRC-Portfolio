@@ -12,7 +12,8 @@ The script must be executed in **Azure Cloud Shell (PowerShell)**.
 ```powershell
 # Authenticate (must be run first)
 Connect-MgGraph -Scopes "Directory.ReadWrite.All"
-
+```
+```powershell
 # Managed Identity's Service Principal Object ID
 $spId = "<INSERT-MANAGED-IDENTITY-SP-OBJECT-ID>"
 
@@ -28,3 +29,4 @@ New-MgServicePrincipalAppRoleAssignment `
         $graph.AppRoles |
         Where-Object { $_.Value -eq "Directory.Read.All" -and $_.AllowedMemberTypes -contains "Application" }
     ).Id
+```
