@@ -39,6 +39,7 @@ I currently work at Club Car LLC, where I support cloud governance, security aut
 ### Azure Global Admin Access Review
 - Built an automated Azure Runbook leveraging a User-Assigned Managed Identity (UAMI) and Microsoft Graph PowerShell to extract all Global Administrator accounts from Entra ID.
 - Implemented a recurring monthly job that exports results, generates audit-ready evidence, and emails the report to the IT Security team for mandated access reviews.
+- [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/blob/main/Azure%20Automation%20Access%20Review%20/README.md)
 
 **Skills Demonstrated**:
 - Azure Automation Runbooks
