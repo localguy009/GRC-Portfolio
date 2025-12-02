@@ -54,17 +54,12 @@ GRC_Portfolio/
 - Implemented a recurring monthly job that exports results, generates audit-ready evidence, and emails the report to the IT Security team for mandated access reviews.
 - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/Azure/MonthlyAccessReview)
 
-**Skills Demonstrated**:
-- Azure Automation Runbooks
-- Microsoft Graph API (Directory.Read.All, Mail.Send)
-- PowerShell scripting & Managed Identity authentication
-- SharePoint automation for evidence retention
-
+### AWS IAM Group Membership Auditor
+- Developed a Python script using boto3 to automatically retrieve all users belonging to the Administrators IAM group 
+- Enables quick auditing of privileged access by programmatically identifying users assigned to high-privilege IAM groups.
+- - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/AWS/AdminAccessReview)
+ 
  ### AWS S3 Encryption Compliance Checker 
  - Developed a Python script to automatically check all S3 buckets in an AWS account and determine whether server-side encryption (SSE) is enabled.
  - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/AWS/S3EncryptionCheck)
 
-**Skills Demonstrated**:
-- Cloud misconfiguration detection & posture assessment
-- AWS Security & Governance (S3, SSE-S3, SSE-KMS, DSSE-KMS)
-- Python automation with AWS
