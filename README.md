@@ -48,7 +48,7 @@ GRC_Portfolio/
 - CompTIA Security +
 
 ## Projects
-### Azure Global Admin Access Review
+### Azure Global Admin Automated Report
 - Built an automated Azure Runbook leveraging a User-Assigned Managed Identity (UAMI) and Microsoft Graph PowerShell to extract all Global Administrator accounts from Entra ID.
 - Implemented a recurring monthly job that exports results, generates audit-ready evidence, and emails the report to the IT Security team for mandated access reviews.
 - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/Azure/MonthlyAccessReview)
