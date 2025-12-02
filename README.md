@@ -10,13 +10,14 @@ I currently work at Club Car LLC, where I support cloud governance, security aut
 ## Repository Structure
 ```
 GRC_Portfolio/
-├── README.md                                # You are here
 │
-├── Azure Automation Access Review/          # Azure project
-│   ├── Grant-GraphPermissions.md            # PS Script to grant MS Graph app permissions
-│   ├── Invoke-GlobalAdminAccess.ps1         # Cloudshell script automate Global Admin review
-│   ├── step-by-step-guide.md                # Full setup guide for Azure Automation
-│   └── README.md                            # Folder-specific documentation
+├── AWS/                         # AWS cloud automation projects
+│   ├── AdminAccessReview/       # IAM admin access review automation
+│   └── S3EncryptionCheck/       # S3 encryption compliance check
+│
+└── Azure/                       # Azure cloud automation projects
+    └── MonthlyAccessReview/     # Automated Azure Global Admin monthly access review
+
 ```
 
 ## Contact Information
