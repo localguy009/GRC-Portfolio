@@ -51,7 +51,7 @@ GRC_Portfolio/
 ### Azure Global Admin Access Review
 - Built an automated Azure Runbook leveraging a User-Assigned Managed Identity (UAMI) and Microsoft Graph PowerShell to extract all Global Administrator accounts from Entra ID.
 - Implemented a recurring monthly job that exports results, generates audit-ready evidence, and emails the report to the IT Security team for mandated access reviews.
-- [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/blob/main/Azure%20Automation%20Access%20Review%20/README.md)
+- [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/Azure/MonthlyAccessReview)
 
 **Skills Demonstrated**:
 - Azure Automation Runbooks
@@ -61,7 +61,7 @@ GRC_Portfolio/
 
  ### AWS S3 Encryption Compliance Checker 
  - Developed a Python script to automatically check all S3 buckets in an AWS account and determine whether server-side encryption (SSE) is enabled.
- - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/blob/main/AWS/S3EncryptionCheck/README.md)
+ - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/AWS/S3EncryptionCheck)
 
 **Skills Demonstrated**:
 - Cloud misconfiguration detection & posture assessment
