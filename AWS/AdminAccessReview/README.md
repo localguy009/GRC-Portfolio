@@ -16,29 +16,32 @@ This allows security teams to quickly confirm who holds elevated permissions in 
 
 ---
 
-## Script Example
+## Script Example below. Additonal comments add to showcase my learning
+See Admin.py for less comments
 
 ```python
-import boto3
+import boto3   # Allows Python to interact with AWS services
 
-# Choose the IAM group name
+# IAM group we want to inspect
 GROUP_NAME = "Administrators"
 
-# Create an IAM client
+# Create an IAM client object to call IAM APIs
 iam = boto3.client("iam")
 
 print(f"=== Users in IAM group: {GROUP_NAME} ===")
 
-# Get the group
+# Call the IAM API to get group details (returns a dictionary)
 response = iam.get_group(GroupName=GROUP_NAME)
 
-# Extract the list of users
+# "Users" is a key in the response dict that contains a list of user objects
 users = response["Users"]
 
-# Print users
+# Print results
 if not users:
     print("No users in this group.")
 else:
     for user in users:
+        # Each user is a small dictionary; we pull just the username
         print(user["UserName"])
+
 ```
