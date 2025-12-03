@@ -54,7 +54,7 @@ GRC_Portfolio/
 - Implemented a recurring monthly job that exports results, generates audit-ready evidence, and emails the report to the IT Security team for mandated access reviews.
 - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/Azure/MonthlyAccessReview)
 
-### AWS IAM Group Membership Auditor
+### AWS Access Review
 - Developed a Python script using boto3 to automatically retrieve all users belonging to the Administrators IAM group 
 - Enables quick auditing of privileged access by programmatically identifying users assigned to high-privilege IAM groups.
 - - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/AWS/AdminAccessReview)
