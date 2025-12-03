@@ -1,4 +1,4 @@
-# AWS IAM Group Membership Auditor
+# AWS Access Review 
 
 This project retrieves and displays all users who belong to a specified AWS IAM group. It is useful for auditing privileged access, validating IAM configurations, and supporting security/compliance workflows.
 
