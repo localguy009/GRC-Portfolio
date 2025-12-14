@@ -10,7 +10,7 @@ I currently work at Club Car LLC, where I support cloud governance, security aut
 ## Repository Structure
 ```
 GRC_Portfolio/
-│
+│── ReadME.md                    # You are here
 ├── AWS/                         # AWS cloud automation projects
 │   ├── AdminAccessReview/       # IAM admin access review automation
 │   └── S3EncryptionCheck/       # S3 encryption compliance check
