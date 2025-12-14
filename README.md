@@ -31,7 +31,7 @@ GRC_Portfolio/
   
 ### Security & Compliance
 - AWS Security Services (GuardDuty, Security Hub, Audit Manager, IAM, CloudWatch, CloutTrail)
-- Azure Security & Governance: Entra ID, Azure Automation (Runbooks), User-Assigned Managed Identities (UAMI), Microsoft Graph API, Azure Policy
+- Azure Security & Governance: Entra ID, Azure Automation (Runbooks), User-Assigned Managed Identities (UAMI), Microsoft Graph API
 - Risk Assessment and Management
 - Security Control Implementation
 
