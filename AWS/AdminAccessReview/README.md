@@ -16,7 +16,7 @@ This allows you to quickly confirm who holds elevated permissions in an AWS envi
 
 ---
 
-## Script Example below. Additonal comments add to showcase my learning
+## Script Example below. Additonal comments have been add to showcase my learning
 See Admin.py for less comments
 
 ```python
