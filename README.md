@@ -57,7 +57,7 @@ GRC_Portfolio/
 ### AWS Access Review
 - Developed a Python script using boto3 to automatically retrieve all users belonging to the Administrators IAM group 
 - Enables quick auditing of privileged access by programmatically identifying users assigned to high-privilege IAM groups.
-- - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/AWS/AdminAccessReview)
+- [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/AWS/AdminAccessReview)
  
  ### AWS S3 Encryption Compliance Checker 
  - Developed a Python script to automatically check all S3 buckets in an AWS account and determine whether server-side encryption (SSE) is enabled.
