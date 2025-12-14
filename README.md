@@ -40,7 +40,7 @@ GRC_Portfolio/
 - Scripting and Automation (Python, Powershell)
 - Email Security (Abnormal AI, KnowBe4)
 - Identity Access Management (Sailpoint)
-- Vulnerabiltiy Scanns (Qualys, Tenable)
+- Vulnerabiltiy Scanners (Qualys, Tenable)
 - Ticketing (ServiceNow)
 
 ## Certifications
