@@ -12,7 +12,7 @@ The script connects to AWS using the `boto3` SDK and:
 - Retrieves all users assigned to that group  
 - Prints each username to the console   
 
-This allows security teams to quickly confirm who holds elevated permissions in an AWS environment.
+This allows you to quickly confirm who holds elevated permissions in an AWS environment.
 
 ---
 
