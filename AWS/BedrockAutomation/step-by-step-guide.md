@@ -9,12 +9,6 @@ Before starting, make sure you have:
   - AWS Security Hub
   - Amazon Bedrock model access (InvokeModel)
 
-
-- **Lambda environment variables** planned:
-  - `EVIDENCE_BUCKET` = your S3 bucket name
-  - `MODEL_ID` = your Bedrock model ID
-
-
 ## Step 1 — Enable AWS Security Hub
 
 AWS Security Hub is the source of security findings used by this project. The Lambda function will query active Security Hub findings, so Security Hub must be enabled before continuing.
@@ -23,7 +17,7 @@ AWS Security Hub is the source of security findings used by this project. The La
 2. Navigate to Security Hub
 3. Click Enable Security Hub. Enable at least one security standard so findings are generated
 
-## Step 3 — Create the IAM Role for the Lambda Function
+## Step 2 — Create the IAM Role for the Lambda Function
 
 The Lambda function requires an execution role with permissions to read Security Hub findings, invoke Amazon Bedrock, write the report to S3, and publish logs to CloudWatch.
 
@@ -45,7 +39,7 @@ This allows the function to write logs to CloudWatch.
 ### Add Inline Policy 
 See inlinepolicy.md
 
-## Step 4 — Create the Lambda Function
+## Step 3 — Create the Lambda Function
 
 In this step, you will create the Lambda function that retrieves Security Hub findings, invokes Amazon Bedrock, and writes the generated risk report to S3.
 
@@ -61,13 +55,13 @@ In this step, you will create the Lambda function that retrieves Security Hub fi
 - Runtime: Python 3.11 or Python 3.12
 - Execution role:  
   - Select Use an existing role
-  - Choose the IAM role created in **Step 3**
+  - Choose the IAM role created in **Step 2**
 
 Click Create function
 
 ---
 
-### Update Function Settings (Recommended)
+### Update Function Settings 
 
 After the function is created:
 
@@ -78,16 +72,15 @@ After the function is created:
    - **Memory**: 512 MB (or higher if desired)
 4. Save changes
 
-
 ### Validation
 
 - Confirm the function exists and shows **Active**
 - Confirm the correct IAM role is attached
-- Confirm the runtime is Python 3.x
+- Confirm the runtime is Python 
 
 Do **not** add code yet — that will be done in the next step.
 
-## Step 5 — Configure Lambda Environment Variables
+## Step 4 — Configure Lambda Environment Variables
 
 1. In the **AWS Lambda** console, open your function
 2. Navigate to **Configuration → Environment variables**
@@ -101,7 +94,7 @@ Do **not** add code yet — that will be done in the next step.
      **Value**: `<your-bedrock-model-id>`
 
 
-## Step 6 — Add and Deploy the Lambda Code
+## Step 5 — Add and Deploy the Lambda Code
 
 1. In the **AWS Lambda** console, open your function  
 2. Navigate to the **Code** tab  
