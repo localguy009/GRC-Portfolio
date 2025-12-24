@@ -82,7 +82,7 @@ Do **not** add code yet — that will be done in the next step.
 
 ## Step 4 — Configure Lambda Environment Variables
 
-1. In the **AWS Lambda** console, open your function
+1. Open your function
 2. Navigate to **Configuration → Environment variables**
 3. Click **Edit**
 4. Add the following variables:
@@ -96,14 +96,14 @@ Do **not** add code yet — that will be done in the next step.
 
 ## Step 5 — Add and Deploy the Lambda Code
 
-1. In the **AWS Lambda** console, open your function  
+1. Open your function  
 2. Navigate to the **Code** tab  
 3. In the inline editor, replace any existing code with the contents of **`lambda.py`** from this repository  
 4. Click **Deploy**
 
 ### Test and Run
 
-- Create a test event (any empty or dummy JSON is sufficient)
+- Create a test event 
 - Run the function and confirm the execution completes successfully
 - Verify the file **`securityhub-risk-report.md`** is created in the configured S3 bucket
 
