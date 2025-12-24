@@ -1,5 +1,5 @@
 # S3 Encryption Compliance Checker
-This project is a Python-based tool that scans all S3 buckets in an AWS account and reports whether each bucket has **server-side encryption (SSE)** enabled. It uses the AWS SDK for Python (`boto3`) to retrieve bucket configurations and identify buckets that are unencrypted. 
+This is a Python-based tool that scans all S3 buckets in an AWS account and reports whether each bucket has **server-side encryption (SSE)** enabled. It uses the AWS SDK for Python (`boto3`) to retrieve bucket configurations and identify buckets that are unencrypted. 
 ### **AWS Skills**
 - Programmatically interacting with AWS services using `boto3`
 - Understanding S3 encryption types (SSE-S3, SSE-KMS, DSSE-KMS)
@@ -7,8 +7,8 @@ This project is a Python-based tool that scans all S3 buckets in an AWS account 
 - Detecting common S3 misconfigurations
 
 Below is the script with all of my personal notes included.  
-I'm using these comments to track my learning, explain each line in simple terms,  
-and build a deeper understanding of Python and AWS as I grow.
+I'm using these comments to track my learning, explain each line in simple terms 
+and build a deeper understanding of Python
 
 See S3.py for full script without #comment blocks 
 
