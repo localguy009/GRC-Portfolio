@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates how Amazon Bedrock can be used to generate executive-level security risk summaries from AWS Security Hub findings. I built a Lambda function that retrieves and condenses active findings, then invokes a Bedrock-hosted large language model to analyze risk and produce a structured Markdown report.
+This project demonstrates how Amazon Bedrock can be used to generate executive-level security risk summaries from AWS Security Hub findings. I built a Lambda function that retrieves and condenses active findings, then invokes a Bedrock-hosted large language model to analyze risk and produce a structured report.
 
 **High-level flow:**
 
