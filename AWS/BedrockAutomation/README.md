@@ -26,7 +26,7 @@ This project demonstrates how Amazon Bedrock can be used to generate executive-l
   - Region
   - Remediation recommendation
 - Builds a structured prompt for Amazon Bedrock
-- Generates an **executive-level risk report
+- Generates an executive-level risk report
 - Stores the report in S3 as `securityhub-risk-report.md`
 
 ---
