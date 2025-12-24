@@ -11,13 +11,13 @@ I’m a U.S. Navy veteran with a background in Special Operations and I bring th
 ## Repository Structure
 ```
 GRC_Portfolio/
-│── ReadME.md                    # You are here
-├── AWS/                         # AWS cloud automation projects
-│   ├── AdminAccessReview/       # IAM admin access review automation
-│   └── S3EncryptionCheck/       # S3 encryption compliance check
-│
-└── Azure/                       # Azure cloud automation projects
-    └── MonthlyAccessReview/     # Automated Azure Global Admin monthly access review
+│── README.md                     # You are here
+├── AWS/                          # AWS cloud automation projects
+│   ├── AdminAccessReview/        # IAM admin access review automation
+│   ├── S3EncryptionCheck/        # S3 encryption compliance check
+│   └── BedrockAutomation/        # Bedrock risk reporting
+└── Azure/                        # Azure cloud automation projects
+    └── MonthlyAccessReview/      # Azure Global Admin monthly access review
 
 ```
 
