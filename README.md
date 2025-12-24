@@ -64,3 +64,6 @@ GRC_Portfolio/
  - Developed a Python script to automatically check all S3 buckets in an AWS account and determine whether server-side encryption (SSE) is enabled.
  - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/AWS/S3EncryptionCheck)
 
+### AWS Bedrock Automation 
+- Built a Lambda function that retrieves and condenses Security Hub active findings, then invokes a Bedrock-hosted  model to analyze risk and produce a structured report.
+- [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/AWS/BedrockAutomation)
