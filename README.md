@@ -36,13 +36,6 @@ GRC_Portfolio/
 - Risk Assessment and Management
 - Security Control Implementation
 
-### Tools & Technologies
-- EDR (CrowdStrike) SIEM (Splunk, CrowdStrike NGSIEM)
-- Scripting and Automation (Python, Powershell)
-- Email Security (Abnormal AI, KnowBe4)
-- Identity Access Management (Sailpoint)
-- Vulnerabiltiy Scanners (Qualys, Tenable)
-- Ticketing (ServiceNow)
 
 ## Certifications
 - Certified Information Systems Security Professional (CISSP)
