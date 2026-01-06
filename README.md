@@ -25,7 +25,7 @@ GRC_Portfolio/
 
 - **Email**: matthew.connelly094@gmail.com
 - **LinkedIn**: https://www.linkedin.com/in/matt-connelly-/
-## Technical Skills
+
 ### Cloud Platforms
 - Azure
 - Amazon Web Services (AWS)
