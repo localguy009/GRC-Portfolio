@@ -29,13 +29,6 @@ GRC_Portfolio/
 ### Cloud Platforms
 - Azure
 - Amazon Web Services (AWS)
-  
-### Security & Compliance
-- AWS Security Services (GuardDuty, Security Hub, Audit Manager, IAM, CloudWatch, CloutTrail)
-- Azure Security & Governance: Entra ID, Azure Automation (Runbooks), User-Assigned Managed Identities (UAMI), Microsoft Graph API
-- Risk Assessment and Management
-- Security Control Implementation
-
 
 ## Certifications
 - Certified Information Systems Security Professional (CISSP)
