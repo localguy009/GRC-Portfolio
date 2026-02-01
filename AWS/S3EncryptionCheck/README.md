@@ -3,7 +3,7 @@ This is a Python-based tool that scans all S3 buckets in an AWS account and repo
 
 ### Control Mapping
 - SOC 2 Logical Access & Data Protection Controls
-- Ensures data stored in S3 is encrypted at rest
+- PCI DSS - Protect Stored Cardholder Data 
 
 ### **AWS Skills**
 - Programmatically interacting with AWS services using `boto3`
