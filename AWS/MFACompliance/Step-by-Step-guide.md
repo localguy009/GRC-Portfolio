@@ -1,6 +1,5 @@
 
 # Step-by-Step Build Guide  
-## AWS MFA Compliance Alerting with Security Hub, EventBridge, Lambda, SNS, and S3
 
 This guide walks through how to build the MFA compliance alerting workflow step by step.
  
@@ -15,7 +14,7 @@ Before building this workflow, make sure the following are in place.
 - Amazon S3
 - IAM roles and policies
 
-The following services should be available in the account:
+The following services should be enabled: 
 
 - **AWS Config** enabled
 - **Security Hub** enabled
@@ -112,6 +111,7 @@ Use Case: Lambda
 Next --> Next --> role name: MFA_Compliance_Check
 
 Create an Inline Policy
+(replace region & account-id)
 ```json 
 {
   "Version": "2012-10-17",
