@@ -104,8 +104,9 @@ This role will allow Lambda to:
 - Write evidence files to **Amazon S3**
 - Send alert messages to **Amazon SNS**
 - Write execution logs to **CloudWatch Logs**
-
-### Select the trusted entity
+1. Navigate to IAM
+2. AWS Console → IAM → Roles → Create role
+3. Select the trusted entity
 Choose: AWS Service
 Use Case: Lambda 
 Next --> Next --> role name: MFA_Compliance_Check
@@ -173,7 +174,7 @@ Choose the following settings:
 | Runtime | Python 3.x |
 | Architecture | x86_64 (default) |
 | Execution role | Use existing role |
-| Existing role | `lambda-mfa-finding-role` 
+| Existing role | `MFA_Compliance_Check` 
 
 ### Configure environment variables
 
