@@ -16,10 +16,10 @@ This workflow creates an automated audit trail and alerting mechanism for MFA co
 ## Security Framework Alignment
 
 This project maps to compliance frameworks by enforcing strong authentication controls and detecting identity misconfigurations.
-- NIST SP 800-53 Rev. 5
+- NIST SP 800-53 
 - CIS AWS Foundations Benchmark
-- PCI DSS v4.0
-- SOC 2 Trust Services Criteria
+- PCI DSS (Detective monitoring and audit evidence) 
+- SOC 2 - Detective (Security monitoring and alerting, Logical Access - monitoring) 
 
 ## Architecture
 
