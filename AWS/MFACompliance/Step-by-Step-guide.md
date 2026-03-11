@@ -48,8 +48,7 @@ The goal of this step is to confirm that AWS Config is already detecting IAM use
 1. Open the **AWS Management Console**
 2. Navigate to **AWS Config**
 3. Select **Rules** from the left navigation menu
-
-### Locate the MFA rule 
+4. Locate the rule `mfa-enabled-for-iam-console-access`
 ## Step 2 — Verify the Finding in Security Hub
 
 ### Navigate to Security Hub
@@ -62,7 +61,7 @@ The goal of this step is to confirm that AWS Config is already detecting IAM use
 
 ## Step 3 — Create an S3 Bucket for Evidence Storage
 Name: mfa-compliance-evidence
-This solution stores evidence artifacts for each MFA compliance finding in Amazon S3.  
+This stores evidence artifacts for each MFA compliance finding in Amazon S3.  
 These JSON files act as a audit trail showing when a non-compliant IAM user was detected.
 
 Each file will contain details about the Security Hub finding, including:
@@ -92,7 +91,7 @@ The Lambda function will publish messages to this topic whenever it processes a 
 
 | Name | `mfa-compliance-alerts`
 
-Next, create a subscription so alerts are sent to your email.
+Next, create a subscription so alerts are sent to your email. Make sure to verify email. 
 
 ## Step 5 — Create the Lambda Execution Role
 
