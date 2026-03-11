@@ -49,9 +49,7 @@ The goal of this step is to confirm that AWS Config is already detecting IAM use
 2. Navigate to **AWS Config**
 3. Select **Rules** from the left navigation menu
 
-### Locate the MFA rule
-
-Find the managed rule:
+### Locate the MFA rule 
 ## Step 2 — Verify the Finding in Security Hub
 
 ### Navigate to Security Hub
@@ -59,8 +57,7 @@ Find the managed rule:
 1. Open the **AWS Management Console**
 2. Navigate to **Security Hub**
 3. Select **Findings**
-
-### Locate the MFA compliance finding
+4. Locate **`mfa-enabled-for-iam-console-access`** rule
 
 
 ## Step 3 — Create an S3 Bucket for Evidence Storage
@@ -264,12 +261,12 @@ If the function is configured correctly, the test should:generate a JSON evidenc
 | Rule type | Rule with an event pattern |
 
 ### Define the Event Pattern
-
+```json
 {
   "source": ["aws.securityhub"],
   "detail-type": ["Security Hub Findings - Imported", "Security Hub Findings - Updated"]
 }
-
+```
 ## Step 9 — Add the required resource-based policy to invoke the Lambda function.
  
 1. Navigate to AWS Lambda
@@ -302,12 +299,8 @@ Add a policy statement allowing EventBridge to invoke the Lambda function.
 ```
 
 Replace the following placeholders with values from your environment:
-
-Placeholder	                   Description
-<region>	                   Your AWS region (example: us-east-1)
-<account-id>	               Your AWS account ID
-mfa-securityhub-trigger	       The EventBridge rule that triggers the Lambda function
-
+- <region>
+- <account-id>	             
 After completing the setup, the MFA compliance automation workflow should now be operational.
 
 
