@@ -16,6 +16,7 @@ GRC_Portfolio/
 │   ├── AdminAccessReview/        # IAM admin access review automation
 │   ├── S3EncryptionCheck/        # S3 encryption compliance check
 │   └── BedrockAutomation/        # Bedrock risk reporting
+│   └── MFA Compliance/           # Automated detection for non compliant users
 └── Azure/                        # Azure cloud automation projects
     └── MonthlyAccessReview/      # Azure Global Admin monthly access review
 
