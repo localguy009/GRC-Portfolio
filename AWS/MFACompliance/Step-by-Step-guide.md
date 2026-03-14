@@ -2,7 +2,7 @@
 # Step-by-Step Build Guide  
 
 This guide walks through how to build the MFA compliance alerting workflow step by step.
- 
+  
 ## Prerequisites
 
 Before building this workflow, make sure the following are in place.
@@ -86,12 +86,13 @@ The Lambda function will publish messages to this topic whenever it processes a 
 
 1. Open the **AWS Management Console**
 2. Navigate to **Amazon SNS**
-3. Select **Topics**
+3. Select **Topics** > **Standard** 
 4. Click **Create topic**
 
 | Name | `mfa-compliance-alerts`
 
-Next, create a subscription so alerts are sent to your email. Make sure to verify email. 
+Next, create a subscription so alerts are sent to your email. Click your topic > subscriptions > Create subscription > protocol>Email
+> **endpoint (insert your email for alerts here)**
 
 ## Step 5 — Create the Lambda Execution Role
 
