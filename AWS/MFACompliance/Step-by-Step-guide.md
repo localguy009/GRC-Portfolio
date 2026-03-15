@@ -321,28 +321,44 @@ Replace the following placeholders with values from your environment:
 
 After completing the setup, the MFA compliance automation workflow should now be operational
 
-## How to Trigger a Test Finding
+## Two Ways to Trigger a Test Finding
 
-You can trigger the automation by intentionally creating a non-compliant user.
+### Method 1 — Create a Non-Compliant IAM User
+You can generate a real finding by creating a test user that violates the MFA rule.
 
 Example test scenario:
 
 1. Create a test IAM user with **console access**
 2. Do **not enable MFA**
 3. Wait for **AWS Config** to evaluate the rule
-4. This generates a Security Hub finding:
-5. SNS alert will trigger and evidence will be saved to S3
+4. A **Security Hub finding** will be generated
+5. The workflow will trigger:
+   - **SNS alert sent**
+   - **Evidence written to S3**
 
+This method works but may take a few minutes for AWS Config to evaluate.
 
-## Trigger the Event from Security Hub CSPM
+---
 
-Once the finding appears in Security Hub, you can manually trigger the workflow by updating the finding status.
+### Method 2 — Trigger from Security Hub (Faster)
+The faster method is to update the workflow status of an existing finding.
 
 1. Open **AWS Security Hub**
 2. Navigate to **CSPM → Findings**
-3. Locate the IAM.5 finding for the non-compliant user
+3. Locate the **IAM.5** finding (`mfa-enabled-for-iam-console-access`)
 4. Select the finding
 5. Change the **Workflow Status**
 
-Example: NEW --> RESOLVED --> NEW
+Example:
+
+NEW → RESOLVED → NEW
+
+When the finding transitions from **RESOLVED back to NEW**, the automation triggers:
+
+- **SNS alert is sent**
+- **Evidence is saved to S3**
+
+This approach is useful for testing because it triggers immediately without waiting for AWS Config evaluation.
+
+
 
