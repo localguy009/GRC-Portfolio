@@ -250,7 +250,7 @@ You can test the Lambda function directly using a sample Security Hub finding.
 ```
 If the function is configured correctly, the test should:generate a JSON evidence file in S3 & send a notification through SNS
 
-## Step 8 — Create the EventBridge Rule
+## Step 8 — Create the EventBridge Rule & Define the Target 
 1. Open the AWS Management Console
 2. Navigate to Amazon EventBridge
 3. Select Rules
@@ -271,6 +271,19 @@ If the function is configured correctly, the test should:generate a JSON evidenc
   "detail-type": ["Security Hub Findings - Imported", "Security Hub Findings - Updated"]
 }
 ```
+### Define the Target
+
+This tells EventBridge what action to take when the rule is triggered.
+1. Scroll to the **Target** section
+2. For **Target type**, select **AWS service**
+3. For **Select a target**, choose **Lambda function**
+4. From the **Function dropdown**, select mfa-securityhub-trigger
+5. Leave **Additional settings** as default unless you want to configure input transformation.
+6. Click **Next**
+7. Review the configuration
+8. Click **Create rule**
+Once created, EventBridge will automatically invoke the **mfa-securityhub-trigger Lambda function** whenever the defined Security Hub event occurs.
+
 ## Step 9 — Add the required resource-based policy to invoke the Lambda function.
  
 1. Navigate to AWS Lambda
