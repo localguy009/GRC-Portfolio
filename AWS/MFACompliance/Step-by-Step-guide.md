@@ -60,7 +60,7 @@ The goal of this step is to confirm that AWS Config is already detecting IAM use
 
 
 ## Step 3 — Create an S3 Bucket for Evidence Storage
-Name: mfa-compliance-evidence
+Name: mfa_compliance_evidence
 This stores evidence artifacts for each MFA compliance finding in Amazon S3.  
 These JSON files act as a audit trail showing when a non-compliant IAM user was detected.
 
@@ -106,7 +106,7 @@ This role will allow Lambda to:
 3. Select the trusted entity
 Choose: AWS Service
 Use Case: Lambda 
-Next --> Next --> role name: MFA_Compliance_Check
+Next --> Next --> role name: mfa_compliance_check
 
 Create an Inline Policy
 (replace region & account-id)
@@ -120,7 +120,7 @@ Create an Inline Policy
       "Action": [
         "s3:PutObject"
       ],
-      "Resource": "arn:aws:s3:::mfa-compliance-evidence/*"
+      "Resource": "arn:aws:s3:::mfa_compliance_evidence/*"
     },
     {
       "Sid": "PublishToSNSTopic",
@@ -167,11 +167,11 @@ Choose the following settings:
 | Setting | Value |
 |-------|------|
 | Function type | Author from scratch |
-| Function name | `mfa-finding-handler` |
+| Function name | `mfa_finding_handler` |
 | Runtime | Python 3.x |
 | Architecture | x86_64 (default) |
 | Execution role | Use existing role |
-| Existing role | `MFA_Compliance_Check` 
+| Existing role | `mfa_compliance_check` 
 
 ### Configure environment variables
 
@@ -184,7 +184,7 @@ Next, add environment variables that allow the Lambda function to locate the S3 
 
 | Key | Value |
 |----|------|
-| `BUCKET_NAME` | `mfa-compliance-evidence` |
+| `BUCKET_NAME` | `mfa_compliance_evidence` |
 | `SNS_TOPIC_ARN` | `arn:aws:sns:<region>:<account-id>:mfa-compliance-alerts` |
 
 
@@ -206,7 +206,7 @@ The full Lambda implementation is included in this repository: lambda.py
 
 1. Open the **AWS Management Console**
 2. Navigate to **AWS Lambda**
-3. Select the function **`mfa-finding-handler`**
+3. Select the function **`mfa_finding_handler`**
 4. Go to the **Code** tab
 5. Replace the default Lambda code with lambda.py
 6. Click deploy
@@ -260,7 +260,7 @@ If the function is configured correctly, the test should:generate a JSON evidenc
 
 | Setting | Value |
 |-------|------|
-| Rule name | `mfa-securityhub-trigger` |
+| Rule name | `mfa_securityhub_trigger` |
 | Event bus | `default` |
 | Rule type | Rule with an event pattern |
 
@@ -277,17 +277,17 @@ This tells EventBridge what action to take when the rule is triggered.
 1. Scroll to the **Target** section
 2. For **Target type**, select **AWS service**
 3. For **Select a target**, choose **Lambda function**
-4. From the **Function dropdown**, select mfa-securityhub-trigger
+4. From the **Function dropdown**, select mfa_securityhub_trigger
 5. Leave **Additional settings** as default unless you want to configure input transformation.
 6. Click **Next**
 7. Review the configuration
 8. Click **Create rule**
-Once created, EventBridge will automatically invoke the **mfa-securityhub-trigger Lambda function** whenever the defined Security Hub event occurs.
+Once created, EventBridge will automatically invoke the **mfa_securityhub_trigger Lambda function** whenever the defined Security Hub event occurs.
 
 ## Step 9 — Add the required resource-based policy to invoke the Lambda function.
  
 1. Navigate to AWS Lambda
-2. Select the function `mfa-finding-handler`
+2. Select the function `mfa_finding_handler`
 3. Open Configuration → Permissions
 4. Locate Resource-based policy
 
@@ -304,10 +304,10 @@ Add a policy statement allowing EventBridge to invoke the Lambda function.
         "Service": "events.amazonaws.com"
       },
       "Action": "lambda:InvokeFunction",
-      "Resource": "arn:aws:lambda:<region>:<account-id>:function:mfa-finding-handler",
+      "Resource": "arn:aws:lambda:<region>:<account-id>:function:mfa_finding_handler",
       "Condition": {
         "ArnLike": {
-          "AWS:SourceArn": "arn:aws:events:<region>:<account-id>:rule/mfa-securityhub-trigger"
+          "AWS:SourceArn": "arn:aws:events:<region>:<account-id>:rule/mfa_securityhub_trigger"
         }
       }
     }
