@@ -316,10 +316,10 @@ Add a policy statement allowing EventBridge to invoke the Lambda function.
 ```
 
 Replace the following placeholders with values from your environment:
-- <region>
-- <account-id>	             
-After completing the setup, the MFA compliance automation workflow should now be operational.
+- region & account-id
 
+
+After completing the setup, the MFA compliance automation workflow should now be operational
 
 ## How to Trigger a Test Finding
 
