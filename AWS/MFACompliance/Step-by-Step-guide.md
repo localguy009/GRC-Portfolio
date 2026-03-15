@@ -225,7 +225,7 @@ You can test the Lambda function directly using a sample Security Hub finding.
     "findings": [
       {
         "Id": "test-finding-001",
-        "AwsAccountId": "123456789012",
+        "AwsAccountId": "1234567",
         "Title": "MFA should be enabled for all IAM users that have a console password",
         "Severity": {
           "Label": "MEDIUM"
@@ -234,9 +234,13 @@ You can test the Lambda function directly using a sample Security Hub finding.
           "SecurityControlId": "IAM.5",
           "Status": "FAILED"
         },
+        "Workflow": {
+          "Status": "NEW"
+        },
+        "RecordState": "ACTIVE",
         "Resources": [
           {
-            "Id": "test_user_no_mfa"
+            "Id": "tes_user_no_mfa"
           }
         ]
       }
