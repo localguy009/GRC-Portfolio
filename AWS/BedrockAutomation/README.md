@@ -16,6 +16,18 @@ I built a Lambda function that retrieves and condenses Security Hub findings, th
 5. The findings report is written to Amazon S3 as audit-ready evidence.
 
 
+## Control Mapping
+
+### 🔹 NIST SP 800-53
+- **SI-4**: System Monitoringt  
+- **RA-5** – Vulnerability Monitoring & Scanning  
+- **IR-5 / IR-6** – Incident Monitoring & Reporting 
+- **CA-7** – Continuous Monitoring 
+- **RA-3** – Risk Assessment
+
+
+
+
 ## What the Lambda Function Does
 
 - Pulls active findings from AWS Security Hub
