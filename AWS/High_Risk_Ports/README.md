@@ -1,4 +1,4 @@
-#  EC2.19 Control Automation – Detection & Evidence Pipeline
+#  EC2.19: Security Groups with Public Exposure Contro – Automated Detection & Evidence Pipeline
 
 ## 📌 Project Overview
 
