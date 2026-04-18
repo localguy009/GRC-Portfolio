@@ -1,9 +1,8 @@
 
 # Step-by-Step Build Guide  
-## AWS MFA Compliance Alerting with Security Hub, EventBridge, Lambda, SNS, and S3
 
 This guide walks through how to build the MFA compliance alerting workflow step by step.
- 
+  
 ## Prerequisites
 
 Before building this workflow, make sure the following are in place.
@@ -15,7 +14,7 @@ Before building this workflow, make sure the following are in place.
 - Amazon S3
 - IAM roles and policies
 
-The following services should be available in the account:
+The following services should be enabled: 
 
 - **AWS Config** enabled
 - **Security Hub** enabled
@@ -49,10 +48,7 @@ The goal of this step is to confirm that AWS Config is already detecting IAM use
 1. Open the **AWS Management Console**
 2. Navigate to **AWS Config**
 3. Select **Rules** from the left navigation menu
-
-### Locate the MFA rule
-
-Find the managed rule:
+4. Locate the rule `mfa-enabled-for-iam-console-access`
 ## Step 2 — Verify the Finding in Security Hub
 
 ### Navigate to Security Hub
@@ -60,13 +56,12 @@ Find the managed rule:
 1. Open the **AWS Management Console**
 2. Navigate to **Security Hub**
 3. Select **Findings**
-
-### Locate the MFA compliance finding
+4. Locate **`mfa-enabled-for-iam-console-access`** rule
 
 
 ## Step 3 — Create an S3 Bucket for Evidence Storage
-Name: mfa-compliance-evidence
-This solution stores evidence artifacts for each MFA compliance finding in Amazon S3.  
+Name: mfa_compliance_evidence
+This stores evidence artifacts for each MFA compliance finding in Amazon S3.  
 These JSON files act as a audit trail showing when a non-compliant IAM user was detected.
 
 Each file will contain details about the Security Hub finding, including:
@@ -91,12 +86,13 @@ The Lambda function will publish messages to this topic whenever it processes a 
 
 1. Open the **AWS Management Console**
 2. Navigate to **Amazon SNS**
-3. Select **Topics**
+3. Select **Topics** > **Standard** 
 4. Click **Create topic**
 
 | Name | `mfa-compliance-alerts`
 
-Next, create a subscription so alerts are sent to your email.
+Next, create a subscription so alerts are sent to your email. Click your topic > subscriptions > Create subscription > protocol>Email
+> **endpoint (insert your email for alerts here)**
 
 ## Step 5 — Create the Lambda Execution Role
 
@@ -105,13 +101,15 @@ This role will allow Lambda to:
 - Write evidence files to **Amazon S3**
 - Send alert messages to **Amazon SNS**
 - Write execution logs to **CloudWatch Logs**
-
-### Select the trusted entity
+1. Navigate to IAM
+2. AWS Console → IAM → Roles → Create role
+3. Select the trusted entity
 Choose: AWS Service
 Use Case: Lambda 
-Next --> Next --> role name: MFA_Compliance_Check
+Next --> Next --> role name: mfa_compliance_check
 
 Create an Inline Policy
+(replace region & account-id)
 ```json 
 {
   "Version": "2012-10-17",
@@ -122,7 +120,7 @@ Create an Inline Policy
       "Action": [
         "s3:PutObject"
       ],
-      "Resource": "arn:aws:s3:::mfa-compliance-evidence/*"
+      "Resource": "arn:aws:s3:::mfa_compliance_evidence/*"
     },
     {
       "Sid": "PublishToSNSTopic",
@@ -169,11 +167,11 @@ Choose the following settings:
 | Setting | Value |
 |-------|------|
 | Function type | Author from scratch |
-| Function name | `mfa-finding-handler` |
+| Function name | `mfa_finding_handler` |
 | Runtime | Python 3.x |
 | Architecture | x86_64 (default) |
 | Execution role | Use existing role |
-| Existing role | `lambda-mfa-finding-role` 
+| Existing role | `mfa_compliance_check` 
 
 ### Configure environment variables
 
@@ -186,7 +184,7 @@ Next, add environment variables that allow the Lambda function to locate the S3 
 
 | Key | Value |
 |----|------|
-| `BUCKET_NAME` | `mfa-compliance-evidence` |
+| `BUCKET_NAME` | `mfa_compliance_evidence` |
 | `SNS_TOPIC_ARN` | `arn:aws:sns:<region>:<account-id>:mfa-compliance-alerts` |
 
 
@@ -208,7 +206,7 @@ The full Lambda implementation is included in this repository: lambda.py
 
 1. Open the **AWS Management Console**
 2. Navigate to **AWS Lambda**
-3. Select the function **`mfa-finding-handler`**
+3. Select the function **`mfa_finding_handler`**
 4. Go to the **Code** tab
 5. Replace the default Lambda code with lambda.py
 6. Click deploy
@@ -227,7 +225,7 @@ You can test the Lambda function directly using a sample Security Hub finding.
     "findings": [
       {
         "Id": "test-finding-001",
-        "AwsAccountId": "123456789012",
+        "AwsAccountId": "1234567",
         "Title": "MFA should be enabled for all IAM users that have a console password",
         "Severity": {
           "Label": "MEDIUM"
@@ -236,9 +234,13 @@ You can test the Lambda function directly using a sample Security Hub finding.
           "SecurityControlId": "IAM.5",
           "Status": "FAILED"
         },
+        "Workflow": {
+          "Status": "NEW"
+        },
+        "RecordState": "ACTIVE",
         "Resources": [
           {
-            "Id": "test_user_no_mfa"
+            "Id": "tes_user_no_mfa"
           }
         ]
       }
@@ -248,7 +250,7 @@ You can test the Lambda function directly using a sample Security Hub finding.
 ```
 If the function is configured correctly, the test should:generate a JSON evidence file in S3 & send a notification through SNS
 
-## Step 8 — Create the EventBridge Rule
+## Step 8 — Create the EventBridge Rule & Define the Target 
 1. Open the AWS Management Console
 2. Navigate to Amazon EventBridge
 3. Select Rules
@@ -258,21 +260,34 @@ If the function is configured correctly, the test should:generate a JSON evidenc
 
 | Setting | Value |
 |-------|------|
-| Rule name | `mfa-securityhub-trigger` |
+| Rule name | `mfa_securityhub_trigger` |
 | Event bus | `default` |
 | Rule type | Rule with an event pattern |
 
 ### Define the Event Pattern
-
+```json
 {
   "source": ["aws.securityhub"],
   "detail-type": ["Security Hub Findings - Imported", "Security Hub Findings - Updated"]
 }
+```
+### Define the Target
+
+This tells EventBridge what action to take when the rule is triggered.
+1. Scroll to the **Target** section
+2. For **Target type**, select **AWS service**
+3. For **Select a target**, choose **Lambda function**
+4. From the **Function dropdown**, select mfa_securityhub_trigger
+5. Leave **Additional settings** as default unless you want to configure input transformation.
+6. Click **Next**
+7. Review the configuration
+8. Click **Create rule**
+Once created, EventBridge will automatically invoke the **mfa_securityhub_trigger Lambda function** whenever the defined Security Hub event occurs.
 
 ## Step 9 — Add the required resource-based policy to invoke the Lambda function.
  
 1. Navigate to AWS Lambda
-2. Select the function `mfa-finding-handler`
+2. Select the function `mfa_finding_handler`
 3. Open Configuration → Permissions
 4. Locate Resource-based policy
 
@@ -289,10 +304,10 @@ Add a policy statement allowing EventBridge to invoke the Lambda function.
         "Service": "events.amazonaws.com"
       },
       "Action": "lambda:InvokeFunction",
-      "Resource": "arn:aws:lambda:<region>:<account-id>:function:mfa-finding-handler",
+      "Resource": "arn:aws:lambda:<region>:<account-id>:function:mfa_finding_handler",
       "Condition": {
         "ArnLike": {
-          "AWS:SourceArn": "arn:aws:events:<region>:<account-id>:rule/mfa-securityhub-trigger"
+          "AWS:SourceArn": "arn:aws:events:<region>:<account-id>:rule/mfa_securityhub_trigger"
         }
       }
     }
@@ -301,37 +316,49 @@ Add a policy statement allowing EventBridge to invoke the Lambda function.
 ```
 
 Replace the following placeholders with values from your environment:
-
-Placeholder	                   Description
-<region>	                   Your AWS region (example: us-east-1)
-<account-id>	               Your AWS account ID
-mfa-securityhub-trigger	       The EventBridge rule that triggers the Lambda function
-
-After completing the setup, the MFA compliance automation workflow should now be operational.
+- region & account-id
 
 
-## How to Trigger a Test Finding
+After completing the setup, the MFA compliance automation workflow should now be operational
 
-You can trigger the automation by intentionally creating a non-compliant user.
+## Two Ways to Trigger a Test Finding
+
+### Method 1 — Create a Non-Compliant IAM User
+You can generate a real finding by creating a test user that violates the MFA rule.
 
 Example test scenario:
 
 1. Create a test IAM user with **console access**
 2. Do **not enable MFA**
 3. Wait for **AWS Config** to evaluate the rule
-4. This generates a Security Hub finding:
-5. SNS alert will trigger and evidence will be saved to S3
+4. A **Security Hub finding** will be generated
+5. The workflow will trigger:
+   - **SNS alert sent**
+   - **Evidence written to S3**
 
+This method works but may take a few minutes for AWS Config to evaluate.
 
-## Trigger the Event from Security Hub CSPM
+---
 
-Once the finding appears in Security Hub, you can manually trigger the workflow by updating the finding status.
+### Method 2 — Trigger from Security Hub (Faster)
+The faster method is to update the workflow status of an existing finding.
 
 1. Open **AWS Security Hub**
 2. Navigate to **CSPM → Findings**
-3. Locate the IAM.5 finding for the non-compliant user
+3. Locate the **IAM.5** finding (`mfa-enabled-for-iam-console-access`)
 4. Select the finding
 5. Change the **Workflow Status**
 
-Example: NEW --> RESOLVED --> NEW
+Example:
+
+NEW → RESOLVED → NEW
+
+When the finding transitions from **RESOLVED back to NEW**, the automation triggers:
+
+- **SNS alert is sent**
+- **Evidence is saved to S3**
+
+This approach is useful for testing because it triggers immediately without waiting for AWS Config evaluation.
+
+
 

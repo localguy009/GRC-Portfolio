@@ -16,13 +16,14 @@ GRC_Portfolio/
 │   ├── AdminAccessReview/        # IAM admin access review automation
 │   ├── S3EncryptionCheck/        # S3 encryption compliance check
 │   └── BedrockAutomation/        # Bedrock risk reporting
+│   └── MFA Compliance/           # Automated detection for non compliant users
 └── Azure/                        # Azure cloud automation projects
     └── MonthlyAccessReview/      # Azure Global Admin monthly access review
 
 ```
 
 ## Contact Information
-
+- **Portfolio** https://mconnellysec.com/
 - **Email**: matthew.connelly094@gmail.com
 - **LinkedIn**: https://www.linkedin.com/in/matt-connelly-/
 
@@ -53,3 +54,7 @@ GRC_Portfolio/
 ### AWS Bedrock Automation 
 - Built a Lambda function that retrieves and condenses Security Hub active findings, then invokes a Bedrock-hosted  model to analyze risk and produce a structured report.
 - [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/AWS/BedrockAutomation)
+
+### AWS MFA Compliance Detection
+- This project implements an automated detection and alerting workflow for IAM users that are non-compliant with the AWS Config rule mfa-enabled-for-iam-console-access.
+- [🔗 View Project on GitHub](https://github.com/localguy009/GRC-Portfolio/tree/main/AWS/MFACompliance) 

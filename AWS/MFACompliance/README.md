@@ -16,25 +16,27 @@ This workflow creates an automated audit trail and alerting mechanism for MFA co
 ## Security Framework Alignment
 
 This project maps to compliance frameworks by enforcing strong authentication controls and detecting identity misconfigurations.
-
-### NIST SP 800-53 Rev. 5
-### CIS AWS Foundations Benchmark
-### PCI DSS v4.0
-### SOC 2 Trust Services Criteria
-
+- NIST SP 800-53 
+- CIS AWS Foundations Benchmark
+- PCI DSS (Detective monitoring and audit evidence) 
+- SOC 2 - Detective (Security monitoring and alerting, Logical Access - monitoring) 
 
 ## Architecture
 
+```text
 AWS Config
-↓
+   |
+   v
 Security Hub (Finding Generated)
-↓
+   |
+   v
 EventBridge Rule
-↓
+   |
+   v
 AWS Lambda
-├── Store evidence → Amazon S3
-└── Send alert → Amazon SNS
-
+   |-- Store evidence -> Amazon S3
+    -- Send alert -> Amazon SNS
+```
 
 ## AWS Services Used
 
@@ -45,5 +47,7 @@ AWS Lambda
 - **Amazon SNS** – Sends alert notifications  
 - **Amazon S3** – Stores evidence artifacts  
 - **AWS IAM** – Provides access control for the automation components
+
+
 
 
