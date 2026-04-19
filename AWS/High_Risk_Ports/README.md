@@ -1,4 +1,4 @@
-#  EC2.19 Control Automation – Detection & Evidence Pipeline
+#  EC2.19: Security Groups with Public Exposure Contro – Automated Detection & Evidence Pipeline
 
 ## 📌 Project Overview
 
@@ -20,10 +20,7 @@ Using an event-driven architecture, the control operates continuously in the bac
 ## Control Objective
 Prevent and detect **unauthorized or overly permissive network exposure** in AWS environments.
 
-### Example Risk Scenario
-- Port 3389 (RDP) exposed to `0.0.0.0/0`
-- Potential unauthorized access
-- Increased attack surface for brute force or exploitation
+## Control Mapping
 
 ### 🔹 NIST SP 800-53
 - **AC-4**: Information Flow Enforcement  
