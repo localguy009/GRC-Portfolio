@@ -21,7 +21,7 @@ The project simulates a real-world multi-account AWS architecture and shows how 
 
 ## Controls Implemented
 
-### 🔵 Development Guardrails
+###  Development Guardrails
 
 **EC2 Instance Restrictions**
 - Limits instance types to approved low-cost options
@@ -35,7 +35,7 @@ The project simulates a real-world multi-account AWS architecture and shows how 
 
 ---
 
-### 🔴 Production Guardrails
+###  Production Guardrails
 
 **CloudTrail Protection**
 - Prevents:
