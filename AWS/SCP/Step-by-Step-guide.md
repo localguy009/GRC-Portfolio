@@ -1,4 +1,4 @@
-This lab demonstrates how to implement preventive cloud governance controls using AWS Service Control Policies (SCPs) across Development and Production environments.
+
 
 ## Step 1: Create AWS Accounts
 
