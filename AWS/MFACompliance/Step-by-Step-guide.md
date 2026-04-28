@@ -60,7 +60,7 @@ The goal of this step is to confirm that AWS Config is already detecting IAM use
 
 
 ## Step 3 — Create an S3 Bucket for Evidence Storage
-Name: mfa_compliance_evidence
+Name: mfa-compliance-evidence
 This stores evidence artifacts for each MFA compliance finding in Amazon S3.  
 These JSON files act as a audit trail showing when a non-compliant IAM user was detected.
 
@@ -120,7 +120,7 @@ Create an Inline Policy
       "Action": [
         "s3:PutObject"
       ],
-      "Resource": "arn:aws:s3:::mfa_compliance_evidence/*"
+      "Resource": "arn:aws:s3:::mfa-compliance-evidence/*"
     },
     {
       "Sid": "PublishToSNSTopic",
@@ -168,7 +168,7 @@ Choose the following settings:
 |-------|------|
 | Function type | Author from scratch |
 | Function name | `mfa_finding_handler` |
-| Runtime | Python 3.x |
+| Runtime | Python 3.11 |
 | Architecture | x86_64 (default) |
 | Execution role | Use existing role |
 | Existing role | `mfa_compliance_check` 
@@ -184,7 +184,7 @@ Next, add environment variables that allow the Lambda function to locate the S3 
 
 | Key | Value |
 |----|------|
-| `BUCKET_NAME` | `mfa_compliance_evidence` |
+| `BUCKET_NAME` | `mfa-compliance-evidence` |
 | `SNS_TOPIC_ARN` | `arn:aws:sns:<region>:<account-id>:mfa-compliance-alerts` |
 
 
@@ -277,49 +277,16 @@ This tells EventBridge what action to take when the rule is triggered.
 1. Scroll to the **Target** section
 2. For **Target type**, select **AWS service**
 3. For **Select a target**, choose **Lambda function**
-4. From the **Function dropdown**, select mfa_securityhub_trigger
+4. From the **Function dropdown**, select `mfa_finding_handler`
 5. Leave **Additional settings** as default unless you want to configure input transformation.
 6. Click **Next**
 7. Review the configuration
 8. Click **Create rule**
 Once created, EventBridge will automatically invoke the **mfa_securityhub_trigger Lambda function** whenever the defined Security Hub event occurs.
 
-## Step 9 — Add the required resource-based policy to invoke the Lambda function.
- 
-1. Navigate to AWS Lambda
-2. Select the function `mfa_finding_handler`
-3. Open Configuration → Permissions
-4. Locate Resource-based policy
+After completing the setup, the MFA compliance automation workflow should now be operational.
 
-Add a policy statement allowing EventBridge to invoke the Lambda function.
-```json
-{
-  "Version": "2012-10-17",
-  "Id": "default",
-  "Statement": [
-    {
-      "Sid": "allow-mfa-trigger",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "events.amazonaws.com"
-      },
-      "Action": "lambda:InvokeFunction",
-      "Resource": "arn:aws:lambda:<region>:<account-id>:function:mfa_finding_handler",
-      "Condition": {
-        "ArnLike": {
-          "AWS:SourceArn": "arn:aws:events:<region>:<account-id>:rule/mfa_securityhub_trigger"
-        }
-      }
-    }
-  ]
-}
-```
-
-Replace the following placeholders with values from your environment:
-- region & account-id
-
-
-After completing the setup, the MFA compliance automation workflow should now be operational
+> **Note:** When you select a Lambda function as the target in EventBridge via the console, AWS automatically adds the required resource-based policy to allow EventBridge to invoke the function. No manual policy configuration is needed.
 
 ## Two Ways to Trigger a Test Finding
 
