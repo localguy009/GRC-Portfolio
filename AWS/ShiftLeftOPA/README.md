@@ -100,4 +100,4 @@ ShiftLeftOPA/
 
 Misconfigurations are the leading cause of cloud security incidents. Open SSH, open RDP, and public S3 buckets are consistently in the top findings across AWS environments. This project enforces guardrails at the point where engineers are writing infrastructure code — before anything is deployed — rather than detecting violations after the fact.
 
-This is policy-as-code: security rules written, versioned, and enforced the same way application code is.
+
