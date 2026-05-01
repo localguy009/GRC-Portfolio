@@ -1,6 +1,6 @@
 ## Project Overview
 
-This project implements an automated detection and alerting workflow for IAM users that are non-compliant with the AWS Config rule **`access-keys-rotated`**.
+This project implements an automated detection and alerting workflow for IAM users that are non-compliant with the AWS Config rule IAM.3: IAM users' access keys should be rotated every 90 days or less. For Lab purposes we will edit the config rule `access-keys-rotated` to mark resources non compliant after 1 day.
 
 When AWS Config detects an IAM user with an access key older than 90 days, the result is surfaced as a **Security Hub CSPM finding** for control **IAM.3**.
 
@@ -22,22 +22,6 @@ This project maps to compliance frameworks by enforcing credential management hy
 - PCI DSS (Detective monitoring and audit evidence)
 - SOC 2 — Detective (Security monitoring and alerting, Logical Access monitoring)
 
-## Architecture
-
-```text
-AWS Config
-   |
-   v
-Security Hub (Finding Generated)
-   |
-   v
-EventBridge Rule
-   |
-   v
-AWS Lambda
-   |-- Store evidence -> Amazon S3
-    -- Send alert -> Amazon SNS
-```
 
 ## AWS Services Used
 
